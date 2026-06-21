@@ -43,6 +43,23 @@ export default function Home() {
     audioRef.current.loop = true;
   }, []);
 
+
+  useEffect(() => {
+  const preventScroll = (e: TouchEvent) => {
+    if (!introDone) e.preventDefault();
+  };
+
+  if (!introDone) {
+    document.body.style.overflow = "hidden";
+    document.addEventListener("touchmove", preventScroll, { passive: false });
+  }
+
+  return () => {
+    document.body.style.overflow = "auto";
+    document.removeEventListener("touchmove", preventScroll);
+  };
+}, [introDone]);
+
   const handleVideoEnd = () => {
     sessionStorage.setItem("introPlayed", "true");
     setIntroDone(true);
@@ -58,12 +75,12 @@ export default function Home() {
       </audio>
       <div className="w-full min-h-screen relative overflow-hidden">
         {!introDone && (
-          <div className="fixed inset-0 max-w-130 mx-auto transition-opacity duration-1000 opacity-100">
+          <div className="fixed overflow-hidden h-screen inset-0 max-w-130 mx-auto transition-opacity duration-1000 opacity-100">
             <video
               autoPlay
               muted
               playsInline
-              className=" fixed w-full h-full object-cover"
+              className=" w-full h-full object-cover"
               onEnded={handleVideoEnd}
             >
               <source src="/6477740-hd_1920_1080_25fps.mp4" type="video/mp4" />
