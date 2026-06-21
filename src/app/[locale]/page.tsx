@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import ScratchCoin from "@/components/scratchCoin";
 
 export default function Home() {
   const [introDone, setIntroDone] = useState(false);
@@ -62,7 +63,7 @@ export default function Home() {
               autoPlay
               muted
               playsInline
-              className=" w-full h-full object-cover"
+              className=" fixed w-full h-full object-cover"
               onEnded={handleVideoEnd}
             >
               <source src="/6477740-hd_1920_1080_25fps.mp4" type="video/mp4" />
@@ -117,6 +118,30 @@ export default function Home() {
           <div className="w-15 h-13  relative " onClick={toggleAudio}>
             <Image src={`${audioPlaying ? 'https://vs-invitation.ayandesign.am/Play.png' : 'https://vs-invitation.ayandesign.am/Pause.png'}`} alt="audio" fill className="cursor-pointer brightness-98 hover:scale-110 hover:brightness-110 transition-transform duration-400" onClick={() => setAudioPlaying(!audioPlaying)} />
           </div>
+        </div>
+        <div className="max-w-130 mx-auto py-2 flex flex-col gap-14  ">
+          <div className="w-full h-full flex  items-start justify-center">
+            <p className="font-armenian text-[16px] text-[#5C2018] "> {t("openDay")} </p>
+          </div>
+          <div className="flex justify-center gap-8">
+            <ScratchCoin
+              number="01"
+              image="https://vs-invitation.ayandesign.am/coin.png"
+            />
+
+            <ScratchCoin
+              number="07"
+              image="https://vs-invitation.ayandesign.am/coin.png"
+            />
+
+            <ScratchCoin
+              number="26"
+              image="https://vs-invitation.ayandesign.am/coin.png"
+            />
+          </div>
+        </div>
+        <div className="w-full h-screen border">
+
         </div>
       </div>
       {/* <div className="w-full min-h-screen border relative overflow-hidden">
