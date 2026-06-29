@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import ScratchCoin from "@/components/scratchCoin";
+import Heart from "@/components/heart";
 
 export default function Home() {
   const [introDone, setIntroDone] = useState(false);
@@ -156,6 +157,7 @@ export default function Home() {
               image="https://vs-invitation.ayandesign.am/coin.png"
             />
           </div>
+          <Heart />
         </div>
         <div className="w-full h-screen border">
 
